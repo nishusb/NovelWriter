@@ -4,9 +4,15 @@ Novel.chapters = [];
 var currChap = 0;
 var currScen = 0;
 
-function cc(c) {
-  currChap = c;
-  document.getElementById("edit").value = Novel.chapters[c].text;
+function rmMessageB() {
+  $("#message").hide();
+  $("#edit").show();
+}
+
+function cs(s) {
+  currScen = s;
+  document.getElementById("edit").innerHTML = Novel.chapters[currChap].scenes[currScen].text;
+  rmMessageB();
 }
 
 function chapter(t) {
@@ -17,20 +23,44 @@ function chapter(t) {
   Novel.chapters.push(v);
 }
 
-/*function scene(t, c) {
+function scene(t) {
   var v = {};
   v.title = t;
-  v.text = "";
-  Novel.chapters[c].scenes.push(v);
+  v.text = "edit here";
+  Novel.chapters[currChap].scenes.push(v);
+}
+function createScen() {
+  scene(Novel.chapters[currChap].scenes.length+1);
+  cc(currChap);
+}
+function cc(c) {
+  currChap = c;
+  //document.getElementById("edit").innerHTML = Novel.chapters[c].text;
+  var scenestext = "Scenes: ";
+  for (var s in Novel.chapters[c].scenes) {
+    scenestext += "<a href='#edit' onclick='cs("+s+")'>"+Novel.chapters[c].scenes[s].title+"</a> ";
+  }
+  scenestext += "<a href='#edit' onclick='createScen()'>+</a>";
+  messageB("<h1>Chapter "+(c+1)+"</h1>"+Novel.chapters[c].text+"<h3>"+scenestext+"</h3>");
 }
 
-function sceneUpdate(t, c, s) {
+/*function sceneUpdate(t, c, s) {
   Novel.chapters[c].scenes[s].text = t;
   Novel.chapters[c].text = "";
   for (var a in Novel.chapters[c].scenes) {
     Novel.chapters[c].text += "\n"+Novel.chapters[c].scenes[a].text;
   }
 }*/
+
+function messageB(content) {
+  $("#message").show();
+  $("#edit").hide();
+  document.getElementById("message").innerHTML = content;
+}
+function rmMessageB() {
+  $("#message").hide();
+  $("#edit").show();
+}
 
 function addChap() {
   chapter(Novel.chapters.length+1);
@@ -49,10 +79,6 @@ function exportS() {
   //document.body.innerHTML += ""+story+"</div>";
   $("#output").html("<h2 class='text-center' onclick='removeOutput()' style='color: #f22; cursor: pointer'>X</h2><br><br>"+story);
   $("#output").show();
-  document.getElementById("edit").addEventListener("keyup", function () {
-    if (Novel.chapters[currChap]) {Novel.chapters[currChap].text = document.getElementById("edit").value;}
-  });
-
 }
 
 function updateChapSel() {
@@ -87,7 +113,18 @@ function CCN() {
   updateChapSel();
 }
 
-document.getElementById("edit").addEventListener("keyup", function () {
-  if (Novel.chapters[currChap]) {Novel.chapters[currChap].text = document.getElementById("edit").value;}
+document.getElementById("edit").addEventListener("keyup", function (e) {
+  if (Novel.chapters[currChap]) {
+    Novel.chapters[currChap].scenes[currScen].text = document.getElementById("edit").innerHTML;
+    var scbuild = "";
+    for (var s in Novel.chapters[currChap].scenes) {
+      scbuild += Novel.chapters[currChap].scenes[s].text+"<br>";
+    }
+    Novel.chapters[currChap].text = scbuild;
+  }
 });
-addChap();
+
+//don't write code like this at home, kids '_'
+
+messageB("<h1 class='text-center jumbotron'>NovelWriter"
++"<h2>An early-stage writing app by <a href='https://github.com/vnms'>vnms</a></h2><h2>Click the chapter one button to start.</h2>");
