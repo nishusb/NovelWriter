@@ -1,0 +1,47 @@
+#edit, #message {
+  min-height: 100px;
+  outline: 0;
+  margin-bottom: 40px;
+  /*overflow: auto;*/
+}
+#edit {
+  border-left: 1px solid #aaa;
+  padding: 10px;
+}
+#output {
+  padding: 50px;
+  color: #aaa;
+}
+#menu a {
+  border: 1px solid #0af;
+  color: #0af;
+  border-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+  margin: 5px;
+  display: inline-block;
+  min-width: 45px;
+}
+
+a {
+  color: #0af !important;
+  /*text-decoration: none !important;*/
+}
+input {
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  outline: 0;
+  background: 0;
+}
+
+body {
+  background: #111;
+}
+
+.jumbotron {
+  background: #222;
+}
+
+* {
+  color: #aaa;
+}

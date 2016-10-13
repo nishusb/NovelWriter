@@ -9,74 +9,27 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <script src="javascript/jquery-3.1.1.min.js"></script>
     <script src="javascript/bootstrap.min.js"></script>
-
-    <style>
-      #edit, #message {
-        width: 90%;
-        min-width: 90%;
-        max-width: 90%;
-        min-height: 500px;
-        max-height: 500px;
-        margin: 50px auto;
-        display: block;
-        outline: 0;
-        border: 0;
-        border-left: 1px dotted #555;
-        background: #fcfcfc;
-        transition: 300ms;
-      }
-      #edit:focus {
-        border-left: 4px dotted #555;
-      }
-      #output {
-        display:none;
-        padding: 20px;
-      }
-    </style>
+    <link  rel="stylesheet" href="css/theme.css">
   </head>
   <body>
-    <div class="jumbotron text-center" style="background: #555">
-      <h2>NovelWriter v0.1 by vnms | early demo</h2>
-    </div>
-    <div class="jumbotron text-center">
+    <div id="topbar" class="jumbotron text-center">
       <!--h1>NovelWriter</h1-->
       <div class="container" id="select"></div>
       <div class="container" id="menu">
         <h2>
-          <a href='#' onclick='addChap()'>+</a> ,
-          <a href='#output' onclick='exportS()'>export</a> ,
-          <a href='#'  data-toggle='modal' data-target='#settings'>settings</a>
+          <a href='#' onclick='addChap()'>+</a>
+          <a href='#output' onclick='exportS()'>export</a>
+          <a href='#' onclick=''>chapters</a>
+          <a href='#' onclick=''>characters</a>
         </h2>
       </div>
     </div>
-    <div id="edit" class="container" style="" contenteditable></div>
+    <!--div id="edit" class="container" style="" contenteditable></div-->
     <div id="message" class="container" style="display: none"></div>
-    <div class="jumbotron" id="output"></div>
+    <div class="jumbotron" id="output" style="display:none;"></div>
     <script src="javascript/NovelWriter.js"></script>
     <script>
     updateChapSel();
     </script>
-
-    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeCCN()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Settings</h4>
-          </div>
-          <div class="modal-body">
-            <a href="#" onclick="toggleCCN()">Change Chapter Names</a>
-            <div id="changechaptern" style="display: none">
-              <input id="ccncn" type="text" placeholder="chapter number"></input>
-              <input id="ccnnn" type="text" placeholder="new name"></input>
-              <input value="change" type="button" onclick="CCN()"></input>
-              <p id="ccnmessage" style="color: #f33"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
