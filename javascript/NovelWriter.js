@@ -160,5 +160,5 @@ function showChapSel() {
 
 //OH GOSH WHAT MONSTER HATH I BROUGHT UPON THIS WORLD -vnms, 10/12/16, 6:41pm
 
-messageB("<h1 class='text-center'>NovelWriter</h1>"+
-  "<h2>An early-stage writing app by <a href='https://github.com/vnms'>vnms</a></h2>");
+messageB("<div class='jumbotron text-center'><h1>NovelWriter</h1>"+
+  "<h2>An early-stage writing app by <a href='https://github.com/vnms'>vnms</a></h2></div>");
