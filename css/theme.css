@@ -12,15 +12,16 @@
   padding: 50px;
   color: #aaa;
 }
-#menu a {
+#menu a, .ob {
   border: 1px solid #0af;
   color: #0af;
   border-radius: 5px;
   padding: 5px;
-  text-decoration: none;
+  text-decoration: none !important;
   margin: 5px;
   display: inline-block;
   min-width: 45px;
+  cursor: pointer;
 }
 
 a {
