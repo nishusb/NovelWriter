@@ -37,7 +37,8 @@ function cc(c) {
     scenestext += "<a href='#' onclick='cs("+s+")'>"+Novel.chapters[c].scenes[s].title+"</a> , ";
   }
   scenestext += "<a href='#' onclick='createScen()'>+</a>";
-  messageB("<h1>Chapter "+(c+1)+"</h1>"+Novel.chapters[c].text+"<h3>"+scenestext+"</h3>"+"<h2><a class='ob' onclick='delChap()'>delete</a></h2>");
+  messageB("<h1>Chapter "+(c+1)+"</h1><div style='font-size: 18px'>"+Novel.chapters[c].text+"</div><h3>"+
+  scenestext+"</h3>"+"<h2><a class='ob' onclick='delChap()'>delete</a></h2>");
 }
 
 /*function sceneUpdate(t, c, s) {
@@ -82,9 +83,9 @@ function cs(s) {
   //document.getElementById("edit").innerHTML = Novel.chapters[currChap].scenes[currScen].text;
   //rmMessageB();
   messageB("<h1><a onclick='cc("+currChap+")' href='#'>Chapter "+(currChap+1)+"</a></h1><h2>"+  Novel.chapters[currChap].scenes[currScen].title+
-  " <input id='csn' class='coolInput' placeholder='change scene name'></input></h2>"+
-  "<div id='edit' contenteditable></div>"+
-  "<h2><a href='#' onclick='delScene()'>delete</a></h2>");
+  " | <input id='csn' class='coolInput' placeholder='change scene name'></input></h2>"+
+  "<div id='edit' contenteditable style='font-size: 20px'></div>"+
+  "<h2><a href='#' class='ob' onclick='delScene()'>delete</a></h2>");
   document.getElementById("edit").innerHTML = Novel.chapters[currChap].scenes[currScen].text;
   document.getElementById("edit").addEventListener("keyup", scbuildS);
   document.getElementById("csn").addEventListener("keydown", function(e) {
@@ -127,7 +128,7 @@ function removeOutput() {
 function exportS() {
   var story = "";
   for (var c in Novel.chapters) {
-    story+="<h2>"+Novel.chapters[c].title+"</h2><br>"+Novel.chapters[c].text+"<br><br>";
+    story+="<h2>"+Novel.chapters[c].title+"</h2><div style='font-size: 18px'>"+Novel.chapters[c].text+"</div><br><br>";
   }
   //document.body.innerHTML += ""+story+"</div>";
   $("#output").html("<h2 onclick='removeOutput()' style='text-align: right'>"+
@@ -139,7 +140,7 @@ function exportS() {
 function updateChapSel() {
   //document.getElementById('select').style.wordWrap="break-word";
   //document.getElementById('select').innerHTML = "";
-  var thing = "";
+  var thing = "<h2 style='display: inline-block'><a href='#' class='ob' style='' onclick='addChap()'>+</a></h2> ";
   for (var c in Novel.chapters) {
     thing += "<h2 style='display: inline'><a href='#' onclick='cc("+(c)+")'>"+"Chapter "+Novel.chapters[c].title+"</a></h2>";
     if (c < Novel.chapters.length-1) {
@@ -150,6 +151,7 @@ function updateChapSel() {
   chapMessThing = thing;
 }
 function showChapSel() {
+  console.log(chapMessThing);
   messageB(chapMessThing);
 }
 
