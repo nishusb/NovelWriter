@@ -10,12 +10,14 @@
 }
 #output {
   padding: 50px;
-  color: #aaa;
+  /*color: #aaa;*/
 }
 #menu a, .ob {
-  border: 1px solid #0af;
-  color: #0af;
-  border-radius: 5px;
+  /*border: 1px solid #0af;
+  background-color: #0f0f0f;
+  color: #555 !important;
+  border-radius: 5px;*/
+  border-bottom: 1px solid #0af;
   padding: 5px;
   text-decoration: none !important;
   margin: 5px;
@@ -32,11 +34,13 @@ a {
 input {
   border: 0;
   border-bottom: 1px solid #aaa;
+  /*border-left: 1px solid #aaa;*/
   outline: 0;
   background: 0;
+  width: 10em;
 }
 
-body {
+/*body {
   background: #111;
 }
 
@@ -46,4 +50,4 @@ body {
 
 * {
   color: #aaa;
-}
+}*/

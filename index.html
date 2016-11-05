@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <script src="javascript/jquery-3.1.1.min.js"></script>
     <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/FileSaver.js"></script>
     <link  rel="stylesheet" href="css/theme.css">
   </head>
   <body>
@@ -16,9 +17,11 @@
       <div class="container" id="select"></div>
       <div class="container" id="menu">
         <h2>
-          <a href='#output' onclick='exportS()'>export</a>
+          <a href='#' onclick='showMainPage()'>story</a>
           <a href='#' onclick='showChapSel()'>chapters</a>
-          <a href='#' onclick=''>characters</a>
+          <a href='#' onclick='showCharacterPage()'>characters</a>
+          <a href='#' onclick='saveN()'>save</a>
+          <a href='#' onclick='uploadN()'>load</a>
         </h2>
       </div>
     </div>
