@@ -13,20 +13,17 @@
     <link  rel="stylesheet" href="css/theme.css">
   </head>
   <body>
-    <div id="topbar" class="jumbotron text-center">
-      <div class="container" id="select"></div>
-      <div class="container" id="menu">
-        <h2>
-          <a href='#' onclick='showMainPage()'>story</a>
-          <a href='#' onclick='showChapSel()'>chapters</a>
-          <a href='#' onclick='showCharacterPage()'>characters</a>
-          <a href='#' onclick='saveN()'>save</a>
-          <a href='#' onclick='uploadN()'>load</a>
-        </h2>
-      </div>
+    <div id="topbar" style="" class="container-full">
+      <h2 style='margin: 0; padding: 0'>
+        <a href='#' onclick='showMainPage()'>story</a>
+        <a href='#' onclick='showChapSel()'>chapters</a>
+        <a href='#' onclick='showCharacterPage()'>characters</a>
+        <a href='#' onclick='saveN()'>save</a>
+        <a href='#' onclick='uploadN()'>load</a>
+      </h2>
     </div>
-    <div id="message" class="container" style="display: none"></div>
-    <div class="jumbotron" id="output" style="display:none;"></div>
+    <div id="message" class="container-full" style="display: none; min-height: 50px; padding: 10px"></div>
+    <!--div class="jumbotron" id="output" style="display:none;"></div-->
     <script src="javascript/NovelWriter.js"></script>
     <script>
     updateChapSel();

@@ -1,53 +1,56 @@
-#edit, #message {
+body {
+  background: #111;
+  color: #888;
+}
+
+#edit {
   min-height: 100px;
   outline: 0;
   margin-bottom: 40px;
-  /*overflow: auto;*/
-}
-#edit {
   border-left: 1px solid #aaa;
   padding: 10px;
 }
-#output {
-  padding: 50px;
-  /*color: #aaa;*/
+
+#topbar {
+  transition: 300ms;
+  height: 20px;
+  overflow: hidden;
+  background: #222;
+} #topbar:hover {
+  height: 50px;
+  opacity: 1;
 }
-#menu a, .ob {
-  /*border: 1px solid #0af;
-  background-color: #0f0f0f;
-  color: #555 !important;
-  border-radius: 5px;*/
-  border-bottom: 1px solid #0af;
+
+#topbar a {
+  opacity: 0;
+  transition: 200ms;
+} #topbar:hover a {
+  opacity: 1;
+  transition: 400ms;
+} #topbar a, .ob {
+  color: #268 !important;
+  border-bottom: 1px solid #268;
   padding: 5px;
   text-decoration: none !important;
   margin: 5px;
   display: inline-block;
-  min-width: 45px;
   cursor: pointer;
   text-align: center;
+  margin-top: 0;
 }
 
 a {
-  color: #0af !important;
-  /*text-decoration: none !important;*/
+  color: #268 !important;
 }
 input {
   border: 0;
   border-bottom: 1px solid #aaa;
-  /*border-left: 1px solid #aaa;*/
   outline: 0;
   background: 0;
   width: 10em;
-}
-
-/*body {
-  background: #111;
-}
-
-.jumbotron {
-  background: #222;
-}
-
-* {
   color: #aaa;
-}*/
+}
+
+.ob {
+  color: #268 !important;
+}
