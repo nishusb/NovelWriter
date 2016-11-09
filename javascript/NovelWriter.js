@@ -8,14 +8,18 @@ Novel.title = "story";
 Novel.author = "anonymous";
 Novel.characters = [];
 
+function saveCodeToTxt() {
+  var blob = new Blob([JSON.stringify(Novel)], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, Novel.title+".novelwriter.txt");
+}
 function saveN() {
   //var blob = new Blob([JSON.stringify(Novel)], {type: "text/plain;charset=utf-8"});
   //saveAs(blob, Novel.title+".txt");
-  messageB("<div class='jumbotron'><div class='ob'>"+JSON.stringify(Novel)+"</div>Save that code in a text file then load it in when you come back to the site</div>");
+  messageB("<div class='container'><div class='ob'>"+JSON.stringify(Novel)+"</div>Copy then paste (or <a onclick='saveCodeToTxt()'>save</a>) that code in a text file then load it in when you come back to the site</div>");
 }
 function uploadN() {
-  messageB("<div class='jumbotron'><h1>load story</h1>"+
-  "<input id='text' style='outline: 0; min-width: 500; min-height: 200' class='ob' placeholder='paste code'></input><a href='#' class='ob' id='upNov'>load</a></div>");
+  messageB("<div class='container'><h1>load story</h1>"+
+  "<input id='text' style='outline: 0; min-width: 500; min-height: 200' class='ob' placeholder=''></input><a href='#' class='ob' id='upNov'>load</a></div>");
   var tempun = document.getElementById("upNov");
   tempun.addEventListener("mousedown",function() {
     Novel = JSON.parse(text.value);
@@ -37,6 +41,8 @@ function rmMessageB() {
   $("#message").hide();
   $("#edit").show();
 }
+
+//i warned you
 
 function chapter(t) {
   var v = {};
@@ -64,7 +70,7 @@ function cc(c) {
     scenestext += "<a href='#' onclick='cs("+s+")'>"+Novel.chapters[c].scenes[s].title+"</a> , ";
   }
   scenestext += "<a href='#' onclick='createScen()'>+</a>";
-  messageB("<div class='jumbotron'><h1>chapter "+(c+1)+"</h1><div style='font-size: 18px'>"+Novel.chapters[c].text+"</div><h3>"+
+  messageB("<div class='container'><h1>chapter "+(c+1)+"</h1><div style='font-size: 18px'>"+Novel.chapters[c].text+"</div><h3>"+
   scenestext+"</h3>"+"<h2><a class='ob' onclick='delChap()'>delete</a></h2></div>");
 }
 
@@ -83,16 +89,21 @@ function addCharacter(n) {
 }
 function cchar(c) {
   currChar = c;
-  messageB("<div class='jumbotron'>"+
+  messageB("<div class='container'>"+
     "<h1>"+Novel.characters[currChar].name+"</h1>"+
     "<h2><a href='#' class='ob' onclick='deleteChar("+c+")'>delete</a></h2></div>");
 }
 
+function saveStoryAsHTML() {
+  var blob = new Blob([Novel.title+" by "+Novel.author+"\n"+exportS()+"<style>*{font-family:arial;font-weight:0}</style>"], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, Novel.title+".html");
+}
+
 function showMainPage() {
-  messageB("<div class='jumbotron'>"+
-    "<h1>"+Novel.title+"</h1><input id='changeTitle' placeholder='change title'></input>"+
-    "<h2>by "+Novel.author+"</h2><input id='changeAuthor' placeholder='change author'></input>"+
-    "<div>"+exportS()+"</div>"+
+  messageB("<div class='container'>"+
+    "<h1>"+Novel.title+" <input id='changeTitle' style='display: inline' placeholder='change'></input></h1>"+
+    "<h2>by "+Novel.author+" <input id='changeAuthor' style='display: inline' placeholder='change'></input></h2>"+
+    "<h2><a class='ob' onclick='saveStoryAsHTML()'>save to file</a></h2><div>"+exportS()+"</div>"+
     "</div>");
     document.getElementById("changeTitle").addEventListener("keydown", function(e) {
       if (e.keyCode==13) {
@@ -113,7 +124,7 @@ function showCharacterPage() {
     chr += "<a href='#' class='ob' onclick='cchar("+cc+")'>"+Novel.characters[cc].name+"</a>";
   }
   chr += "</h2>";
-  messageB("<div class='jumbotron textcenter'>"+
+  messageB("<div class='container textcenter'>"+
     "<h1>characters</h1>"+
     "<h2><input id='addCharacter' placeholder='add character'></input>"+chr+"</h2></div>");
   document.getElementById("addCharacter").addEventListener("keydown", function(e) {
@@ -152,7 +163,7 @@ function cs(s) {
   currScen = s;
   //document.getElementById("edit").innerHTML = Novel.chapters[currChap].scenes[currScen].text;
   //rmMessageB();
-  messageB("<div class='jumbotron'><h1>"+Novel.chapters[currChap].scenes[currScen].title+
+  messageB("<div class='container'><h1>"+Novel.chapters[currChap].scenes[currScen].title+
   "<p style='display:inline'><input id='csn' class='coolInput' placeholder='change'></input></p></h1><h2>"+
   "</h2><h2><a onclick='cc("+currChap+")' href='#'>chapter "+(currChap+1)+"</a></h2>"+
   "<div id='edit' contenteditable style='font-size: 20px'></div>"+
@@ -210,7 +221,7 @@ function exportS() {
 function updateChapSel() {
   //document.getElementById('select').style.wordWrap="break-word";
   //document.getElementById('select').innerHTML = "";
-  var thing = "<div class='jumbotron'><h1>chapters <a href='#' class='ob' style='' onclick='addChap()'>+</a></h1><h2 style='display: inline-block'></h2> ";
+  var thing = "<div class='container'><h1>chapters <a href='#' class='ob' style='' onclick='addChap()'>+</a></h1><h2 style='display: inline-block'></h2> ";
   for (var c in Novel.chapters) {
     thing += "<h2 style='display: inline'><a href='#' onclick='cc("+(c)+")'>"+"chapter "+Novel.chapters[c].title+"</a></h2>";
     if (c < Novel.chapters.length-1) {
@@ -227,5 +238,6 @@ function showChapSel() {
 //don't write code like this at home, kids '_'
 //seriously dont its for your own good
 
-messageB("<div class='jumbotron text-center'><h1>NovelWriter</h1>"+
-  "<h2>An early-stage writing app by <a href='https://github.com/vnms'>vnms</a></h2></div>");
+messageB("<div class='container text-center'><h1>NovelWriter</h1>"+
+  "<h2>An early-stage writing app by <a href='https://github.com/vnms'>vnms</a></h2>"+
+  "<h2>Hover over the gray bar at the top for menu options</h2><p>Press enter to activate a text input when there is no button</div>");
