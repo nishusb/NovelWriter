@@ -1,9 +1,11 @@
 body {
   background: #111;
   color: #888;
+  font-family: 'Work Sans', sans-serif;
 }
 
 #edit {
+  font-family: sans-serif;
   min-height: 100px;
   outline: 0;
   margin-bottom: 40px;
@@ -16,9 +18,11 @@ body {
   height: 20px;
   overflow: hidden;
   background: #222;
+  transition-delay: 300ms;
 } #topbar:hover {
   height: 50px;
   opacity: 1;
+  transition-delay: 0ms;
 }
 
 #topbar a {
@@ -42,6 +46,7 @@ body {
 a {
   color: #268 !important;
 }
+
 input {
   border: 0;
   border-bottom: 1px solid #aaa;
@@ -53,4 +58,10 @@ input {
 
 .ob {
   color: #268 !important;
+}
+
+.checked-true {
+
+} .checked-false {
+
 }
